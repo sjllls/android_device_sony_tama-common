@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Inherit from the proprietary version
+-include vendor/sony/tama-common/BoardConfigVendor.mk
+
 BOARD_VENDOR := sony
 
 COMMON_PATH := device/sony/tama-common
@@ -77,12 +80,14 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 # Treble
 BOARD_VNDK_VERSION := current
 
-# ANT+
-# BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
-
 # Audio
+AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
+AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
+AUDIO_FEATURE_ENABLED_HDMI_SPK := true
+AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
+AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
@@ -102,6 +107,7 @@ TARGET_USES_HWC2 := true
 TARGET_ENABLE_MEDIADRM_64 := true
 
 # HIDL
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE :=  $(COMMON_PATH)/compatibility_matrix.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(COMMON_PATH)/framework_manifest.xml
 
 # Partitions
@@ -147,6 +153,3 @@ PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)
 # Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
-
-# Inherit from the proprietary version
--include vendor/sony/tama-common/BoardConfigVendor.mk

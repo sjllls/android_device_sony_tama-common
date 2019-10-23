@@ -5,6 +5,7 @@ on early-init
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules bu520x1nvx.ko rdbg.ko synaptics_tcm_i2c.ko clearpad_core.ko sim_detect.ko synaptics_tcm_recovery.ko clearpad_i2c.ko snd-soc-sdm845.ko synaptics_tcm_reflash.ko clearpad_rmi_dev.ko snd-soc-wcd-mbhc.ko synaptics_tcm_testing.ko fpc1075_platform.ko snd-soc-wcd-spi.ko synaptics_tcm_touch.ko llcc_perfmon.ko snd-soc-wcd934x.ko tcs3490.ko modules.aliassnd-soc-wcd9xxx.ko texfat.ko modules.depsnd-socwsa881x.ko tof_sensor.ko mpq-adapter.ko sony_camera.ko tspp.ko mpq-dmx-hw-plugin.ko swr-wcd-ctrl.ko wcd-core.ko nxp_pn553_nfc.ko synaptics_tcm_core.ko wcd-dsp-glink.ko pinctrl-wcd.ko synaptics_tcm_device.ko qca_cld3_wlan.ko synaptics_tcm_diagnostics.ko
 
 on boot
+    mount none /system/overlay/BluetoothResCommon.apk /vendor/overlay/BluetoothResCommon.apk bind
     # OTG
     write /sys/class/power_supply/usb/otg_switch 1
 
